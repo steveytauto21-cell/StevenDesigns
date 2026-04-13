@@ -1,748 +1,556 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Steven Designs — Premium Web Systems for Philippine Businesses</title>
-  <meta name="description" content="Steven Designs builds premium, high-converting websites for Philippine businesses. Zero-Risk: we build your custom site before you pay ₱1." />
-  <meta name="keywords" content="web design Philippines, website design Quezon City, affordable web design, Philippine business website, Steven Designs" />
-  <meta property="og:title" content="Steven Designs — Premium Web Systems for Philippine Businesses" />
-  <meta property="og:description" content="We build your custom site before you pay ₱1. Zero-Risk. Zero-Guessing. Pure Results." />
-  <meta property="og:type" content="website" />
+  <meta name="description" content="Steven Designs builds custom business engines — not templates — for cafes, salons, gyms, auto shops, and restaurants across the Philippines. Zero-risk prototype. You see it before you pay." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            syne: ['Syne', 'sans-serif'],
-            inter: ['Inter', 'sans-serif'],
-          },
-          colors: {
-            slate: {
-              900: '#0f172a',
-            },
-            blue: {
-              600: '#2563eb',
-            }
-          }
-        }
-      }
-    }
-  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com" defer></script>
   <style>
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #eff6ff;
-      color: #0f172a;
-      overflow-x: hidden;
+    :root {
+      --accent: #C8A96E;
+      --accent-light: #E8C98A;
+      --dark: #0E0E10;
+      --ink: #1A1A1E;
+      --muted: #6B7280;
+      --surface: #F8F7F4;
+      --glow: rgba(200,169,110,0.35);
     }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { font-family: 'Outfit', sans-serif; }
+    body { background: var(--surface); color: var(--ink); overflow-x: hidden; }
 
-    /* Glassmorphism Nav */
-    .glass-nav {
-      background: rgba(239, 246, 255, 0.75);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(37, 99, 235, 0.12);
-    }
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(248,247,244,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(200,169,110,0.15); }
+    .nav-inner { max-width: 1280px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.4rem; color: var(--ink); text-decoration: none; letter-spacing: -0.02em; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+    .nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--muted); text-decoration: none; letter-spacing: 0.02em; position: relative; transition: color 0.3s; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 1.5px; background: var(--accent); transition: width 0.3s ease; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta { background: var(--ink); color: #fff !important; padding: 0.55rem 1.4rem; border-radius: 100px; font-size: 0.875rem !important; font-weight: 600 !important; transition: all 0.3s ease !important; }
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { background: var(--accent) !important; color: var(--ink) !important; box-shadow: 0 0 20px var(--glow) !important; transform: scale(1.04); }
 
-    /* Deep CTA Shadow */
-    .cta-primary {
-      box-shadow: 0 8px 32px rgba(37, 99, 235, 0.45), 0 2px 8px rgba(37,99,235,0.2);
-    }
-    .cta-primary:hover {
-      box-shadow: 0 12px 40px rgba(37, 99, 235, 0.6), 0 4px 12px rgba(37,99,235,0.3);
-    }
-    .cta-dark {
-      box-shadow: 0 8px 32px rgba(15, 23, 42, 0.45);
-    }
-    .cta-dark:hover {
-      box-shadow: 0 12px 40px rgba(15, 23, 42, 0.65);
-    }
+    /* HAMBURGER */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--ink); transition: all 0.3s; border-radius: 2px; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    /* Floating Call Button */
-    .float-btn {
-      box-shadow: 0 8px 40px rgba(37, 99, 235, 0.55);
-      animation: float-pulse 2.5s ease-in-out infinite;
-    }
-    @keyframes float-pulse {
-      0%, 100% { transform: translateY(0); box-shadow: 0 8px 40px rgba(37,99,235,0.55); }
-      50% { transform: translateY(-6px); box-shadow: 0 18px 55px rgba(37,99,235,0.65); }
-    }
+    /* MOBILE NAV */
+    .mobile-nav { display: none; position: fixed; top: 68px; left: 0; right: 0; background: rgba(248,247,244,0.97); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(200,169,110,0.15); padding: 1.5rem 2rem; z-index: 99; flex-direction: column; gap: 1.5rem; }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { font-size: 1rem; font-weight: 500; color: var(--ink); text-decoration: none; }
 
-    /* Bento Cards */
-    .bento-card {
-      border-radius: 24px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .bento-card:hover {
-      transform: translateY(-4px);
-    }
+    /* HERO */
+    .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 68px; background: var(--surface); position: relative; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; }
+    .hero-orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.25; }
+    .hero-orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, #C8A96E, transparent); top: -150px; right: -100px; }
+    .hero-orb-2 { width: 400px; height: 400px; background: radial-gradient(circle, #6E9EC8, transparent); bottom: -100px; left: -80px; }
+    .hero-inner { max-width: 1280px; margin: 0 auto; padding: 6rem 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 1; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(200,169,110,0.12); border: 1px solid rgba(200,169,110,0.3); color: #9A7540; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.4rem 1rem; border-radius: 100px; margin-bottom: 1.5rem; }
+    .hero-title { font-family: 'DM Serif Display', serif; font-size: clamp(3rem, 5.5vw, 5.5rem); line-height: 1.05; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 1.5rem; }
+    .hero-title em { font-style: italic; color: var(--accent); }
+    .hero-subtitle { font-size: 1.125rem; line-height: 1.75; color: var(--muted); max-width: 480px; margin-bottom: 2.5rem; font-weight: 400; }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--ink); color: #fff; padding: 0.875rem 2rem; border-radius: 100px; font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: all 0.3s ease; letter-spacing: 0.01em; min-height: 44px; }
+    .btn-primary:hover { background: var(--accent); color: var(--ink); box-shadow: 0 0 30px var(--glow); transform: scale(1.04) translateY(-1px); }
+    .btn-ghost { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--ink); padding: 0.875rem 2rem; border-radius: 100px; font-weight: 600; font-size: 0.9rem; text-decoration: none; border: 1.5px solid rgba(14,14,16,0.2); transition: all 0.3s ease; min-height: 44px; }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: scale(1.04) translateY(-1px); }
+    .hero-visual { position: relative; }
+    .hero-card { background: white; border-radius: 24px; padding: 2rem; box-shadow: 0 25px 80px rgba(0,0,0,0.1); position: relative; overflow: hidden; }
+    .hero-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--accent), #6E9EC8, var(--accent)); }
+    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
+    .stat-box { background: var(--surface); border-radius: 16px; padding: 1.25rem; }
+    .stat-num { font-family: 'DM Serif Display', serif; font-size: 2.25rem; color: var(--ink); letter-spacing: -0.03em; }
+    .stat-label { font-size: 0.8rem; color: var(--muted); font-weight: 500; margin-top: 0.25rem; }
+    .industry-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+    .tag { background: rgba(200,169,110,0.1); border: 1px solid rgba(200,169,110,0.25); color: #9A7540; font-size: 0.75rem; font-weight: 600; padding: 0.35rem 0.85rem; border-radius: 100px; }
+    .hero-badge { display: flex; align-items: center; gap: 0.75rem; background: var(--surface); border-radius: 12px; padding: 0.875rem 1.25rem; margin-top: 1.5rem; }
+    .badge-dot { width: 10px; height: 10px; background: #22C55E; border-radius: 50%; box-shadow: 0 0 0 3px rgba(34,197,94,0.2); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{ box-shadow: 0 0 0 3px rgba(34,197,94,0.2); } 50%{ box-shadow: 0 0 0 6px rgba(34,197,94,0.1); } }
+    .badge-text { font-size: 0.8rem; color: var(--muted); font-weight: 500; }
+    .badge-text strong { color: var(--ink); }
 
-    /* Macbook Frame */
-    .macbook-frame {
-      background: #1e293b;
-      border-radius: 16px;
-      padding: 10px 10px 20px;
-      position: relative;
-      box-shadow: 0 30px 80px rgba(15,23,42,0.4);
-    }
-    .macbook-bar {
-      background: #334155;
-      border-radius: 8px 8px 0 0;
-      padding: 8px 12px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 8px;
-    }
-    .mac-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-    }
-    .macbook-screen {
-      border-radius: 6px;
-      overflow: hidden;
-      aspect-ratio: 16/9;
-    }
-    .macbook-screen img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .macbook-notch {
-      background: #0f172a;
-      height: 18px;
-      border-radius: 0 0 14px 14px;
-      margin: 0 40px;
-      margin-top: 10px;
-    }
+    /* MARQUEE */
+    .marquee-section { background: var(--ink); padding: 1.25rem 0; overflow: hidden; }
+    .marquee-track { display: flex; gap: 3rem; white-space: nowrap; animation: marquee 20s linear infinite; }
+    .marquee-item { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.35); display: flex; align-items: center; gap: 1rem; flex-shrink: 0; }
+    .marquee-dot { width: 4px; height: 4px; background: var(--accent); border-radius: 50%; }
+    @keyframes marquee { from{ transform: translateX(0); } to{ transform: translateX(-50%); } }
 
-    /* Number Accent */
-    .step-num {
-      font-family: 'Syne', sans-serif;
-      font-size: 5rem;
-      font-weight: 800;
-      line-height: 1;
-      color: rgba(37, 99, 235, 0.12);
-      position: absolute;
-      top: 12px;
-      right: 20px;
-    }
+    /* SECTION COMMONS */
+    section { padding: 7rem 0; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+    .section-eyebrow { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+    .section-title { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.1; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 1.25rem; }
+    .section-sub { font-size: 1.05rem; color: var(--muted); line-height: 1.75; max-width: 560px; }
 
-    /* Gradient text */
-    .gradient-text {
-      background: linear-gradient(135deg, #2563eb 0%, #60a5fa 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+    /* INDUSTRIES (BENTO) */
+    .bento-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: auto auto; gap: 1.25rem; margin-top: 4rem; }
+    .bento-card { border-radius: 24px; padding: 2.5rem; position: relative; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: default; }
+    .bento-card:hover { transform: translateY(-4px); box-shadow: 0 30px 80px rgba(0,0,0,0.12); }
+    .bento-card.tall { grid-row: span 2; }
+    .bento-card.wide { grid-column: span 2; }
+    .bento-dark { background: var(--ink); color: white; }
+    .bento-gold { background: linear-gradient(135deg, #C8A96E 0%, #A07840 100%); color: white; }
+    .bento-light { background: white; }
+    .bento-muted { background: #F0EDE8; }
+    .bento-icon { font-size: 2.5rem; margin-bottom: 1.5rem; }
+    .bento-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.6; margin-bottom: 0.5rem; }
+    .bento-name { font-family: 'DM Serif Display', serif; font-size: 1.75rem; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+    .bento-desc { font-size: 0.9rem; line-height: 1.65; opacity: 0.7; }
+    .bento-tag { display: inline-block; background: rgba(255,255,255,0.15); border-radius: 100px; padding: 0.3rem 0.85rem; font-size: 0.72rem; font-weight: 600; margin-top: 1.25rem; }
+    .bento-dark .bento-tag { background: rgba(200,169,110,0.25); color: var(--accent-light); }
+    .bento-gold .bento-tag { background: rgba(255,255,255,0.2); }
+    .bento-light .bento-label, .bento-muted .bento-label { color: var(--muted); }
+    .bento-light .bento-name, .bento-muted .bento-name { color: var(--ink); }
+    .bento-light .bento-desc, .bento-muted .bento-desc { color: var(--muted); }
+    .bento-light .bento-tag, .bento-muted .bento-tag { background: rgba(14,14,16,0.07); color: var(--ink); }
 
-    /* Section divider */
-    .section-divider {
-      width: 48px;
-      height: 4px;
-      background: #2563eb;
-      border-radius: 9999px;
-    }
+    /* PROCESS */
+    .process-section { background: var(--ink); }
+    .process-section .section-eyebrow { color: var(--accent); }
+    .process-section .section-title { color: white; }
+    .process-section .section-sub { color: rgba(255,255,255,0.5); }
+    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 4rem; }
+    .process-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 2rem; position: relative; transition: all 0.3s ease; }
+    .process-card:hover { background: rgba(200,169,110,0.08); border-color: rgba(200,169,110,0.25); transform: translateY(-3px); }
+    .process-num { font-family: 'DM Serif Display', serif; font-size: 3.5rem; color: rgba(200,169,110,0.2); line-height: 1; margin-bottom: 1rem; letter-spacing: -0.04em; }
+    .process-title { font-weight: 700; font-size: 1.05rem; color: white; margin-bottom: 0.6rem; }
+    .process-desc { font-size: 0.875rem; line-height: 1.65; color: rgba(255,255,255,0.45); }
+    .process-connector { display: none; }
 
-    /* Noise overlay on hero */
-    .hero-section {
-      background: #0f172a;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-section::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
-      opacity: 0.4;
-      pointer-events: none;
-    }
-    .hero-glow {
-      position: absolute;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(37,99,235,0.25) 0%, transparent 70%);
-      top: -100px;
-      right: -100px;
-      pointer-events: none;
-    }
-    .hero-glow-2 {
-      position: absolute;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(96,165,250,0.12) 0%, transparent 70%);
-      bottom: -80px;
-      left: -60px;
-      pointer-events: none;
-    }
+    /* ZERO RISK */
+    .zerorisk { background: linear-gradient(135deg, #1A1A1E 0%, #0E0E10 100%); position: relative; overflow: hidden; }
+    .zerorisk::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 800px; height: 800px; background: radial-gradient(circle, rgba(200,169,110,0.08) 0%, transparent 60%); border-radius: 50%; }
+    .zerorisk-inner { text-align: center; position: relative; z-index: 1; }
+    .zerorisk .section-title { color: white; max-width: 700px; margin: 0 auto 1.25rem; }
+    .zerorisk .section-sub { max-width: 520px; margin: 0 auto 3rem; color: rgba(255,255,255,0.5); }
+    .zerorisk-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3.5rem; text-align: left; }
+    .zr-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 2rem; transition: all 0.3s ease; }
+    .zr-card:hover { border-color: rgba(200,169,110,0.3); background: rgba(200,169,110,0.05); transform: translateY(-3px); }
+    .zr-icon { width: 48px; height: 48px; background: rgba(200,169,110,0.12); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; font-size: 1.3rem; }
+    .zr-title { font-weight: 700; font-size: 1rem; color: white; margin-bottom: 0.5rem; }
+    .zr-desc { font-size: 0.875rem; line-height: 1.65; color: rgba(255,255,255,0.45); }
 
-    /* Tag pill */
-    .tag-pill {
-      background: rgba(37, 99, 235, 0.1);
-      border: 1px solid rgba(37, 99, 235, 0.25);
-      color: #2563eb;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 5px 14px;
-      border-radius: 9999px;
-      display: inline-block;
-    }
-    .tag-pill-dark {
-      background: rgba(96, 165, 250, 0.12);
-      border: 1px solid rgba(96, 165, 250, 0.25);
-      color: #93c5fd;
-    }
+    /* SOCIAL PROOF */
+    .testimonials { background: white; }
+    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 4rem; }
+    .testi-card { background: var(--surface); border-radius: 20px; padding: 2rem; position: relative; transition: transform 0.3s ease; }
+    .testi-card:hover { transform: translateY(-3px); }
+    .testi-stars { color: var(--accent); font-size: 0.875rem; letter-spacing: 0.05em; margin-bottom: 1.25rem; }
+    .testi-quote { font-size: 0.95rem; line-height: 1.75; color: var(--ink); margin-bottom: 1.5rem; font-style: italic; }
+    .testi-author { display: flex; align-items: center; gap: 0.75rem; }
+    .testi-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), #6E9EC8); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.875rem; color: white; flex-shrink: 0; }
+    .testi-name { font-weight: 700; font-size: 0.875rem; color: var(--ink); }
+    .testi-biz { font-size: 0.75rem; color: var(--muted); }
 
-    /* Scrollbar */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #eff6ff; }
-    ::-webkit-scrollbar-thumb { background: #2563eb; border-radius: 9999px; }
+    /* FOOTER */
+    footer { background: var(--ink); padding: 5rem 0 2.5rem; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
+    .footer-brand { font-family: 'DM Serif Display', serif; font-size: 1.6rem; color: white; margin-bottom: 1rem; letter-spacing: -0.02em; }
+    .footer-brand span { color: var(--accent); }
+    .footer-desc { font-size: 0.875rem; line-height: 1.75; color: rgba(255,255,255,0.4); max-width: 280px; }
+    .footer-contact { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-contact a { font-size: 0.875rem; color: rgba(255,255,255,0.5); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; transition: color 0.3s; }
+    .footer-contact a:hover { color: var(--accent); }
+    .footer-col-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 1.25rem; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+    .footer-links a { font-size: 0.875rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.3s; }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .footer-copy { font-size: 0.8rem; color: rgba(255,255,255,0.25); }
+    .footer-made { font-size: 0.8rem; color: rgba(255,255,255,0.25); }
 
-    /* Mobile menu transition */
-    #mobile-menu {
-      transition: max-height 0.3s ease, opacity 0.3s ease;
+    /* FLOATING CTA */
+    .float-cta { position: fixed; bottom: 2rem; right: 2rem; z-index: 90; display: flex; flex-direction: column; gap: 0.75rem; align-items: flex-end; }
+    .float-btn { display: flex; align-items: center; gap: 0.6rem; background: var(--ink); color: white; padding: 0.75rem 1.25rem; border-radius: 100px; font-size: 0.825rem; font-weight: 600; text-decoration: none; box-shadow: 0 8px 32px rgba(0,0,0,0.25); transition: all 0.3s ease; min-height: 44px; }
+    .float-btn:hover { background: var(--accent); color: var(--ink); transform: scale(1.05) translateX(-3px); box-shadow: 0 12px 40px var(--glow); }
+    .float-btn.phone { background: #22C55E; }
+    .float-btn.phone:hover { background: #16A34A; }
+
+    /* FADE IN */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .bento-grid { grid-template-columns: 1fr 1fr; }
+      .bento-card.tall { grid-row: span 1; }
+      .process-grid { grid-template-columns: 1fr 1fr; }
+      .zerorisk-cards { grid-template-columns: 1fr 1fr; }
+      .testi-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero-inner { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 2rem; }
+      .hero-visual { display: none; }
+      .bento-grid { grid-template-columns: 1fr; }
+      .bento-card.wide { grid-column: span 1; }
+      .process-grid { grid-template-columns: 1fr; }
+      .zerorisk-cards { grid-template-columns: 1fr; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+      .float-cta { bottom: 1.25rem; right: 1.25rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ===== FLOATING CALL BUTTON ===== -->
-  <a href="tel:09623797660"
-     class="float-btn fixed bottom-6 right-6 z-50 bg-blue-600 text-white font-syne font-bold text-sm px-5 py-3 rounded-2xl flex items-center gap-2 hover:bg-blue-500 hover:scale-105 transition-all duration-300">
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 6.75Z"/>
-    </svg>
-    Call Now
+<!-- FLOATING CTA -->
+<div class="float-cta">
+  <a href="tel:09623797660" class="float-btn phone" aria-label="Call Steven Designs">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    0962-379-7660
   </a>
+  <a href="mailto:steven.designs21@gmail.com" class="float-btn" aria-label="Email Steven Designs">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    Email Us
+  </a>
+</div>
 
-  <!-- ===== NAV ===== -->
-  <nav class="glass-nav sticky top-0 z-40">
-    <div class="max-w-7xl mx-auto px-5 md:px-10 h-16 flex items-center justify-between">
-      <!-- Logo -->
-      <a href="#" class="font-syne font-extrabold text-slate-900 text-xl tracking-tight flex items-center gap-2">
-        <span class="w-7 h-7 bg-blue-600 rounded-lg flex items-center justify-center">
-          <span class="text-white text-xs font-extrabold">SD</span>
-        </span>
-        STEVEN DESIGNS
-      </a>
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Steven<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html" class="nav-cta">Start Project</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
 
-      <!-- Desktop Nav Links -->
-      <div class="hidden md:flex items-center gap-8">
-        <a href="#process" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Process</a>
-        <a href="#why-us" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Why Us</a>
-        <a href="#contact" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Contact</a>
-        <a href="tel:09623797660"
-           class="cta-primary bg-blue-600 text-white text-sm font-syne font-bold px-5 py-2.5 rounded-xl hover:bg-blue-500 hover:scale-105 transition-all duration-200">
-          Get Your Free Site →
-        </a>
-      </div>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="services.html">Services</a>
+  <a href="contact.html" style="color: var(--accent); font-weight: 700;">→ Start Project</a>
+</div>
 
-      <!-- Mobile Hamburger -->
-      <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
-        <span class="w-6 h-0.5 bg-slate-900 rounded transition-all"></span>
-        <span class="w-6 h-0.5 bg-slate-900 rounded transition-all"></span>
-        <span class="w-4 h-0.5 bg-slate-900 rounded transition-all"></span>
-      </button>
+<!-- HERO -->
+<main>
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
     </div>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-blue-50/95 backdrop-blur-md border-t border-blue-100">
-      <div class="max-w-7xl mx-auto px-5 py-4 flex flex-col gap-3">
-        <a href="#process" class="text-sm font-medium text-slate-700 py-2 border-b border-blue-100">Process</a>
-        <a href="#why-us" class="text-sm font-medium text-slate-700 py-2 border-b border-blue-100">Why Us</a>
-        <a href="#contact" class="text-sm font-medium text-slate-700 py-2 border-b border-blue-100">Contact</a>
-        <a href="tel:09623797660"
-           class="cta-primary bg-blue-600 text-white text-sm font-syne font-bold px-5 py-3 rounded-xl text-center hover:bg-blue-500 transition-all mt-2">
-          📞 Call Now: 09623797660
-        </a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- ===== HERO SECTION ===== -->
-  <section class="hero-section min-h-screen flex flex-col justify-center px-5 md:px-10 py-20" id="hero">
-    <div class="hero-glow"></div>
-    <div class="hero-glow-2"></div>
-    <div class="max-w-7xl mx-auto w-full relative z-10">
-
-      <!-- Bento Hero Grid -->
-      <div class="grid grid-cols-1 lg:grid-cols-5 gap-5">
-
-        <!-- Main Hero Card -->
-        <div class="bento-card lg:col-span-3 bg-slate-900 border border-slate-700/60 p-8 md:p-12 flex flex-col justify-between min-h-[480px]">
-          <div>
-            <span class="tag-pill-dark mb-6 block w-fit">🇵🇭 Philippine Web Agency</span>
-            <h1 class="font-syne font-extrabold text-5xl md:text-6xl lg:text-7xl text-white tracking-tighter leading-[0.95] mb-6">
-              Your Business<br />
-              Deserves A Website<br />
-              <span class="gradient-text">That Actually Sells.</span>
-            </h1>
-            <p class="text-slate-400 text-lg leading-relaxed max-w-lg">
-              We build premium, conversion-focused web systems for Philippine businesses — and you don't pay a single peso until you've seen your finished site.
-            </p>
-          </div>
-          <div class="flex flex-col sm:flex-row gap-4 mt-10">
-            <a href="tel:09623797660"
-               class="cta-primary bg-blue-600 text-white font-syne font-bold text-base px-7 py-4 rounded-2xl hover:bg-blue-500 hover:scale-105 transition-all duration-200 text-center">
-              📞 Call Steven Now
-            </a>
-            <a href="#process"
-               class="border border-slate-600 text-slate-300 font-syne font-semibold text-base px-7 py-4 rounded-2xl hover:bg-slate-800 hover:scale-105 transition-all duration-200 text-center">
-              See How It Works →
-            </a>
-          </div>
+    <div class="hero-inner">
+      <div class="fade-in">
+        <div class="hero-eyebrow">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="6"/></svg>
+          National Scale · Philippine Business Specialist
         </div>
-
-        <!-- Right Column Stack -->
-        <div class="lg:col-span-2 flex flex-col gap-5">
-
-          <!-- Zero Risk Card -->
-          <div class="bento-card bg-blue-600 p-7 flex flex-col justify-between flex-1">
-            <div class="text-4xl mb-3">🛡️</div>
+        <h1 class="hero-title">
+          Your Business<br>Deserves a<br><em>Real Engine</em>
+        </h1>
+        <p class="hero-subtitle">
+          We build custom web systems for cafes, salons, gyms, auto shops, and restaurants across the Philippines — not templates. You see it fully built before you pay a single peso.
+        </p>
+        <div class="hero-actions">
+          <a href="contact.html" class="btn-primary">
+            Get Free Prototype
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="services.html" class="btn-ghost">View Our Work</a>
+        </div>
+      </div>
+      <div class="hero-visual fade-in" style="transition-delay: 0.15s;">
+        <div class="hero-card">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;">
             <div>
-              <h2 class="font-syne font-extrabold text-2xl text-white tracking-tight mb-2">Zero-Risk Guarantee</h2>
-              <p class="text-blue-100 text-sm leading-relaxed">We design and build your entire custom website <strong class="text-white">before you pay ₱1.</strong> If you don't love it, you walk away. No contracts. No pressure.</p>
+              <div style="font-size:0.75rem;font-weight:600;color:var(--muted);letter-spacing:0.05em;text-transform:uppercase;">Project Dashboard</div>
+              <div style="font-family:'DM Serif Display',serif;font-size:1.25rem;color:var(--ink);margin-top:0.2rem;">Active Sites</div>
+            </div>
+            <div style="background:var(--surface);border-radius:12px;padding:0.5rem 0.875rem;font-size:0.75rem;font-weight:700;color:#22C55E;">LIVE ●</div>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-box">
+              <div class="stat-num">47+</div>
+              <div class="stat-label">Sites Launched</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-num">₱0</div>
+              <div class="stat-label">Risk Upfront</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-num">5★</div>
+              <div class="stat-label">Avg. Rating</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-num">72h</div>
+              <div class="stat-label">Prototype Time</div>
             </div>
           </div>
-
-          <!-- Stats Row -->
-          <div class="grid grid-cols-2 gap-5">
-            <div class="bento-card bg-slate-800 border border-slate-700/50 p-5 text-center">
-              <div class="font-syne font-extrabold text-4xl text-white tracking-tighter">₱0</div>
-              <div class="text-slate-400 text-xs mt-1 font-medium uppercase tracking-wide">Upfront Cost</div>
-            </div>
-            <div class="bento-card bg-slate-800 border border-slate-700/50 p-5 text-center">
-              <div class="font-syne font-extrabold text-4xl text-blue-400 tracking-tighter">7d</div>
-              <div class="text-slate-400 text-xs mt-1 font-medium uppercase tracking-wide">Avg. Delivery</div>
-            </div>
+          <div class="industry-tags">
+            <span class="tag">🍵 Cafe</span>
+            <span class="tag">💇 Salon</span>
+            <span class="tag">🏋️ Gym</span>
+            <span class="tag">🔧 Auto</span>
+            <span class="tag">🍽️ Restaurant</span>
           </div>
-
-          <!-- Tagline Card -->
-          <div class="bento-card bg-gradient-to-br from-blue-950 to-slate-900 border border-blue-800/40 p-6">
-            <p class="font-syne font-extrabold text-lg text-white tracking-tight leading-snug">
-              "Premium Web Systems for Philippine Businesses."
-            </p>
-            <p class="text-slate-500 text-sm mt-2">— Steven, Founder</p>
+          <div class="hero-badge">
+            <div class="badge-dot"></div>
+            <div class="badge-text"><strong>Zero-Risk Guarantee:</strong> See your site live before paying.</div>
           </div>
-
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== SOCIAL PROOF BANNER ===== -->
-  <div class="bg-blue-600 py-4 overflow-hidden">
-    <div class="flex gap-12 animate-marquee whitespace-nowrap px-8">
-      <span class="text-white font-syne font-bold text-sm tracking-wide">✦ CAFES &amp; RESTAURANTS</span>
-      <span class="text-blue-200 font-syne font-bold text-sm tracking-wide">✦ GYM &amp; FITNESS</span>
-      <span class="text-white font-syne font-bold text-sm tracking-wide">✦ DENTAL CLINICS</span>
-      <span class="text-blue-200 font-syne font-bold text-sm tracking-wide">✦ RETAIL STORES</span>
-      <span class="text-white font-syne font-bold text-sm tracking-wide">✦ SALONS &amp; SPAS</span>
-      <span class="text-blue-200 font-syne font-bold text-sm tracking-wide">✦ LAW FIRMS</span>
-      <span class="text-white font-syne font-bold text-sm tracking-wide">✦ REAL ESTATE</span>
-      <span class="text-blue-200 font-syne font-bold text-sm tracking-wide">✦ MEDICAL CLINICS</span>
-      <span class="text-white font-syne font-bold text-sm tracking-wide">✦ CAFES &amp; RESTAURANTS</span>
-      <span class="text-blue-200 font-syne font-bold text-sm tracking-wide">✦ GYM &amp; FITNESS</span>
-      <span class="text-white font-syne font-bold text-sm tracking-wide">✦ DENTAL CLINICS</span>
-      <span class="text-blue-200 font-syne font-bold text-sm tracking-wide">✦ RETAIL STORES</span>
+  <!-- MARQUEE -->
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <span class="marquee-item">Cafe &amp; Coffee Shop <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Hair Salon &amp; Spa <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Gym &amp; Fitness <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Auto Repair &amp; Detailing <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Restaurant &amp; Food Stall <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Retail &amp; E-Commerce <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Lead Generation <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Online Booking <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Cafe &amp; Coffee Shop <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Hair Salon &amp; Spa <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Gym &amp; Fitness <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Auto Repair &amp; Detailing <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Restaurant &amp; Food Stall <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Retail &amp; E-Commerce <span class="marquee-dot"></span></span>
     </div>
   </div>
-  <style>
-    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-    .animate-marquee { animation: marquee 22s linear infinite; }
-  </style>
 
-  <!-- ===== VALUE PROP / ZERO-RISK SECTION ===== -->
-  <section class="py-24 px-5 md:px-10 bg-blue-50" id="why-us">
-    <div class="max-w-7xl mx-auto">
-
-      <div class="mb-14">
-        <span class="tag-pill mb-4 block w-fit">The Problem We Solve</span>
-        <h2 class="font-syne font-extrabold text-4xl md:text-5xl text-slate-900 tracking-tighter max-w-3xl">
-          Most Businesses Get Burned by Web Designers. <span class="gradient-text">Not Here.</span>
-        </h2>
-        <div class="section-divider mt-6"></div>
+  <!-- INDUSTRIES -->
+  <section id="industries">
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-eyebrow">Industries We Dominate</div>
+        <h2 class="section-title">Built for Every<br>Philippine Business</h2>
+        <p class="section-sub">Five industries. One standard: relentless quality and conversion-first design that makes your business the obvious choice.</p>
       </div>
-
-      <!-- Bento Grid Value Props -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-
-        <!-- Big Card -->
-        <div class="bento-card md:col-span-2 bg-slate-900 p-8 md:p-10 relative overflow-hidden">
-          <span class="step-num">01</span>
-          <div class="relative z-10">
-            <div class="text-3xl mb-4">😤</div>
-            <h3 class="font-syne font-extrabold text-2xl text-white tracking-tight mb-3">The Old Way Is Broken</h3>
-            <p class="text-slate-400 leading-relaxed mb-6">
-              You pay tens of thousands upfront. You wait weeks. You get a generic template with your logo slapped on it. It doesn't convert. It's slow. It looks like everyone else's. You're stuck.
-            </p>
-            <div class="flex flex-col gap-3">
-              <div class="flex items-center gap-3">
-                <span class="text-red-400 text-lg">✗</span>
-                <span class="text-slate-400 text-sm">Pay thousands before seeing anything</span>
-              </div>
-              <div class="flex items-center gap-3">
-                <span class="text-red-400 text-lg">✗</span>
-                <span class="text-slate-400 text-sm">Cookie-cutter templates that don't convert</span>
-              </div>
-              <div class="flex items-center gap-3">
-                <span class="text-red-400 text-lg">✗</span>
-                <span class="text-slate-400 text-sm">Slow delivery, zero communication</span>
-              </div>
-            </div>
-          </div>
+      <div class="bento-grid fade-in" style="transition-delay:0.1s;">
+        <div class="bento-card bento-dark tall">
+          <div class="bento-icon">🍵</div>
+          <div class="bento-label">Industry 01</div>
+          <div class="bento-name">Cafe &amp; Coffee Shop</div>
+          <div class="bento-desc">Ambiance-first websites that drive foot traffic, showcase your menu, and take online orders. Make customers feel the warmth before they walk in.</div>
+          <span class="bento-tag">Menu · Booking · Orders</span>
         </div>
-
-        <!-- Steven's Way -->
-        <div class="bento-card bg-blue-600 p-8 flex flex-col justify-between">
-          <div>
-            <div class="text-3xl mb-4">🚀</div>
-            <h3 class="font-syne font-extrabold text-2xl text-white tracking-tight mb-3">The Steven Designs Way</h3>
-            <p class="text-blue-100 text-sm leading-relaxed">Custom-built. Premium design. Delivered fast. You see the final product first — then you decide.</p>
-          </div>
-          <div class="flex flex-col gap-3 mt-6">
-            <div class="flex items-center gap-3">
-              <span class="text-green-300 text-lg">✓</span>
-              <span class="text-blue-100 text-sm">See your site before paying</span>
-            </div>
-            <div class="flex items-center gap-3">
-              <span class="text-green-300 text-lg">✓</span>
-              <span class="text-blue-100 text-sm">100% custom — not a template</span>
-            </div>
-            <div class="flex items-center gap-3">
-              <span class="text-green-300 text-lg">✓</span>
-              <span class="text-blue-100 text-sm">Built to get you calls &amp; customers</span>
-            </div>
-          </div>
+        <div class="bento-card bento-light">
+          <div class="bento-icon">💇</div>
+          <div class="bento-label">Industry 02</div>
+          <div class="bento-name">Salon &amp; Spa</div>
+          <div class="bento-desc">Luxury-coded sites with integrated booking calendars that fill your appointment slots automatically.</div>
+          <span class="bento-tag">Booking · Gallery · Pricing</span>
         </div>
-
-        <!-- Stat Cards Row -->
-        <div class="bento-card bg-white border border-blue-100 p-7 text-center shadow-sm">
-          <div class="font-syne font-extrabold text-5xl text-blue-600 tracking-tighter">100%</div>
-          <div class="text-slate-500 text-sm mt-2 font-medium">Custom-Built Sites</div>
-          <p class="text-slate-400 text-xs mt-2 leading-relaxed">No templates. No shortcuts. Every pixel designed for your business.</p>
+        <div class="bento-card bento-muted">
+          <div class="bento-icon">🏋️</div>
+          <div class="bento-label">Industry 03</div>
+          <div class="bento-name">Gym &amp; Fitness</div>
+          <div class="bento-desc">High-energy, conversion-optimized pages that capture leads and sell memberships while you sleep.</div>
+          <span class="bento-tag">Lead Gen · Schedule · Promos</span>
         </div>
-
-        <div class="bento-card bg-white border border-blue-100 p-7 text-center shadow-sm">
-          <div class="font-syne font-extrabold text-5xl text-slate-900 tracking-tighter">₱0</div>
-          <div class="text-slate-500 text-sm mt-2 font-medium">Required Upfront</div>
-          <p class="text-slate-400 text-xs mt-2 leading-relaxed">We prove our worth before you spend anything. That's our guarantee.</p>
+        <div class="bento-card bento-gold wide">
+          <div class="bento-icon">🔧</div>
+          <div class="bento-label">Industry 04</div>
+          <div class="bento-name">Auto Repair &amp; Detailing</div>
+          <div class="bento-desc">Trust-first web systems that showcase your services, display real reviews, and route phone calls directly from your site. Make every local search end at your shop.</div>
+          <span class="bento-tag">Leads · Maps · Reviews · Click-to-Call</span>
         </div>
-
-        <div class="bento-card bg-slate-900 border border-slate-700/50 p-7 text-center">
-          <div class="font-syne font-extrabold text-5xl text-blue-400 tracking-tighter">7d</div>
-          <div class="text-slate-400 text-sm mt-2 font-medium">Avg. Delivery</div>
-          <p class="text-slate-500 text-xs mt-2 leading-relaxed">From first call to a fully launched, live website in as little as 7 days.</p>
+        <div class="bento-card bento-light wide">
+          <div class="bento-icon">🍽️</div>
+          <div class="bento-label">Industry 05</div>
+          <div class="bento-name">Restaurant &amp; Food &amp; Bev</div>
+          <div class="bento-desc">From tapsilogan to fine dining — we build food sites with mouth-watering menus, reservation systems, and delivery integrations that increase your average check.</div>
+          <span class="bento-tag">Menu · Reservations · Delivery</span>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ===== THE PROCESS (3 STEPS) ===== -->
-  <section class="py-24 px-5 md:px-10 bg-slate-900" id="process">
-    <div class="max-w-7xl mx-auto">
-
-      <div class="mb-14">
-        <span class="tag-pill-dark mb-4 block w-fit">How It Works</span>
-        <h2 class="font-syne font-extrabold text-4xl md:text-5xl text-white tracking-tighter">
-          Three Steps.<br />
-          <span class="gradient-text">One Powerful Launch.</span>
-        </h2>
-        <div class="section-divider mt-6"></div>
+  <!-- PROCESS -->
+  <section class="process-section">
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-eyebrow">Our Process</div>
+        <h2 class="section-title" style="color:white;">From Zero to Live<br>in 5 Steps</h2>
+        <p class="section-sub">A proven system that removes all the risk from your side — you only decide when you're 100% satisfied.</p>
       </div>
-
-      <!-- Step Bento -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-
-        <div class="bento-card bg-slate-800 border border-slate-700/40 p-8 relative overflow-hidden">
-          <span class="step-num" style="color:rgba(37,99,235,0.18);">01</span>
-          <div class="relative z-10">
-            <div class="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center mb-6">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/>
-              </svg>
-            </div>
-            <h3 class="font-syne font-extrabold text-xl text-white tracking-tight mb-3">Research</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">Steven dives deep into your business, your competitors, and your local market. We map what makes your customers click "Call Now" — and we build around that.</p>
-          </div>
+      <div class="process-grid fade-in" style="transition-delay:0.1s;">
+        <div class="process-card">
+          <div class="process-num">01</div>
+          <div class="process-title">Discovery Call</div>
+          <div class="process-desc">We learn your business, your customers, and your goals in a free 20-minute call. No pressure, no pitch.</div>
         </div>
-
-        <div class="bento-card bg-blue-600 p-8 relative overflow-hidden">
-          <span class="step-num" style="color:rgba(255,255,255,0.15);">02</span>
-          <div class="relative z-10">
-            <div class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"/>
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
-              </svg>
-            </div>
-            <h3 class="font-syne font-extrabold text-xl text-white tracking-tight mb-3">Reveal</h3>
-            <p class="text-blue-100 text-sm leading-relaxed">We send you the complete, fully designed website. You review every page. Every button. Every headline. Only once you love it — we talk payment.</p>
-          </div>
+        <div class="process-card">
+          <div class="process-num">02</div>
+          <div class="process-title">Free Prototype</div>
+          <div class="process-desc">We build your full website — real design, real content, real pages — completely free. You see everything before committing.</div>
         </div>
-
-        <div class="bento-card bg-slate-800 border border-slate-700/40 p-8 relative overflow-hidden">
-          <span class="step-num" style="color:rgba(37,99,235,0.18);">03</span>
-          <div class="relative z-10">
-            <div class="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center mb-6">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8.689c0-.864.933-1.406 1.683-.977l7.108 4.061a1.125 1.125 0 0 1 0 1.954l-7.108 4.061A1.125 1.125 0 0 1 3 16.811V8.69ZM12.75 8.689c0-.864.933-1.406 1.683-.977l7.108 4.061a1.125 1.125 0 0 1 0 1.954l-7.108 4.061a1.125 1.125 0 0 1-1.683-.977V8.69Z"/>
-              </svg>
-            </div>
-            <h3 class="font-syne font-extrabold text-xl text-white tracking-tight mb-3">National Launch</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">We go live. Your site is live, indexed on Google, and ready to convert visitors into paying customers from day one. Ongoing support included.</p>
-          </div>
+        <div class="process-card">
+          <div class="process-num">03</div>
+          <div class="process-title">Revisions</div>
+          <div class="process-desc">Love 90% but want changes? We revise until it's perfect. Your approval drives every decision.</div>
         </div>
-
+        <div class="process-card">
+          <div class="process-num">04</div>
+          <div class="process-title">Launch &amp; Grow</div>
+          <div class="process-desc">Once you're satisfied, we launch your live domain, connect your analytics, and hand over everything you need.</div>
+        </div>
       </div>
+    </div>
+  </section>
 
-      <!-- CTA Banner -->
-      <div class="mt-8 bento-card bg-gradient-to-r from-blue-600 to-blue-700 p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6">
-        <div>
-          <h3 class="font-syne font-extrabold text-2xl md:text-3xl text-white tracking-tight">Ready to See Your Site First?</h3>
-          <p class="text-blue-200 text-sm mt-1">No payment. No commitment. Just your dream website, delivered.</p>
-        </div>
-        <a href="tel:09623797660"
-           class="cta-dark bg-white text-blue-600 font-syne font-extrabold text-base px-8 py-4 rounded-2xl hover:scale-105 hover:bg-blue-50 transition-all duration-200 whitespace-nowrap flex-shrink-0">
-          📞 Start Now — It's Free
+  <!-- ZERO RISK -->
+  <section class="zerorisk">
+    <div class="container">
+      <div class="zerorisk-inner fade-in">
+        <div class="section-eyebrow">The Steven Designs Guarantee</div>
+        <h2 class="section-title">You Never Pay<br>for Something You<br>Don't Love</h2>
+        <p class="section-sub">Every project begins with a complete, production-ready prototype — built before you invest a single peso. That's our promise.</p>
+        <a href="contact.html" class="btn-primary" style="display:inline-flex;">
+          Claim Your Free Prototype
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
       </div>
-
-    </div>
-  </section>
-
-  <!-- ===== WHAT YOU GET ===== -->
-  <section class="py-24 px-5 md:px-10 bg-slate-900">
-    <div class="max-w-7xl mx-auto">
-
-      <div class="mb-14">
-        <span class="tag-pill-dark mb-4 block w-fit">What's Included</span>
-        <h2 class="font-syne font-extrabold text-4xl md:text-5xl text-white tracking-tighter">
-          Everything Your Business Needs.<br />
-          <span class="gradient-text">Nothing You Don't.</span>
-        </h2>
-        <div class="section-divider mt-6"></div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-
-        <div class="bento-card bg-slate-800 border border-slate-700/40 p-7">
-          <div class="text-2xl mb-4">🎨</div>
-          <h3 class="font-syne font-bold text-lg text-white mb-2">100% Custom Design</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">No templates. No drag-and-drop builders. Every page is handcrafted to make your brand look premium and trustworthy.</p>
+      <div class="zerorisk-cards fade-in" style="transition-delay:0.1s;">
+        <div class="zr-card">
+          <div class="zr-icon">🛡️</div>
+          <div class="zr-title">Zero Upfront Cost</div>
+          <div class="zr-desc">We build first, bill after approval. Your business faces zero financial risk during the prototype phase.</div>
         </div>
-
-        <div class="bento-card bg-slate-800 border border-slate-700/40 p-7">
-          <div class="text-2xl mb-4">📱</div>
-          <h3 class="font-syne font-bold text-lg text-white mb-2">Mobile-First & Fast</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">80% of Filipino customers browse on their phones. Your site will look stunning and load fast on every device.</p>
+        <div class="zr-card">
+          <div class="zr-icon">⚡</div>
+          <div class="zr-title">72-Hour Delivery</div>
+          <div class="zr-desc">See a fully functional prototype within 3 business days. No waiting months for a "coming soon" page.</div>
         </div>
-
-        <div class="bento-card bg-slate-800 border border-slate-700/40 p-7">
-          <div class="text-2xl mb-4">🔍</div>
-          <h3 class="font-syne font-bold text-lg text-white mb-2">SEO Optimized</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">Built with proper SEO from day one so you show up on Google when locals search for your type of business.</p>
+        <div class="zr-card">
+          <div class="zr-icon">🔁</div>
+          <div class="zr-title">Unlimited Revisions</div>
+          <div class="zr-desc">We revise until you love every pixel. No limit on feedback rounds during the prototype phase.</div>
         </div>
-
-        <div class="bento-card bg-slate-800 border border-slate-700/40 p-7">
-          <div class="text-2xl mb-4">💬</div>
-          <h3 class="font-syne font-bold text-lg text-white mb-2">Call & Message CTAs</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">Every page is engineered to turn a visitor into a call or a message. More inquiries. More bookings. More revenue.</p>
-        </div>
-
-        <div class="bento-card bg-slate-800 border border-slate-700/40 p-7">
-          <div class="text-2xl mb-4">⚡</div>
-          <h3 class="font-syne font-bold text-lg text-white mb-2">7-Day Delivery</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">From first call to finished site in as little as 7 days. No long waits. No excuses. Just results, delivered fast.</p>
-        </div>
-
-        <div class="bento-card bg-blue-600 p-7">
-          <div class="text-2xl mb-4">🤝</div>
-          <h3 class="font-syne font-bold text-lg text-white mb-2">Post-Launch Support</h3>
-          <p class="text-blue-100 text-sm leading-relaxed">Steven's got your back after launch. Updates, edits, and support — because we're partners in your growth, not just a vendor.</p>
-        </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ===== CONTACT SECTION ===== -->
-  <section class="py-24 px-5 md:px-10 bg-blue-50" id="contact">
-    <div class="max-w-7xl mx-auto">
-
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-
-        <!-- Left: Copy -->
-        <div>
-          <span class="tag-pill mb-4 block w-fit">Get Started Today</span>
-          <h2 class="font-syne font-extrabold text-4xl md:text-5xl text-slate-900 tracking-tighter mb-6">
-            Ready for a Website That <span class="gradient-text">Actually Works?</span>
-          </h2>
-          <p class="text-slate-500 text-lg leading-relaxed mb-8">
-            Send Steven a message and get your free prototype started. No payment. No contract. Just a premium website designed specifically for your business.
-          </p>
-
-          <div class="flex flex-col gap-4">
-            <a href="tel:09623797660"
-               class="cta-primary bg-blue-600 text-white font-syne font-bold text-base px-7 py-4 rounded-2xl hover:bg-blue-500 hover:scale-105 transition-all duration-200 flex items-center gap-3 w-fit">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 6.75Z"/>
-              </svg>
-              Call: 09623797660
-            </a>
-            <a href="mailto:steven.designs21@gmail.com"
-               class="border border-blue-200 bg-white text-slate-700 font-syne font-semibold text-base px-7 py-4 rounded-2xl hover:border-blue-400 hover:scale-105 transition-all duration-200 flex items-center gap-3 w-fit shadow-sm">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/>
-              </svg>
-              steven.designs21@gmail.com
-            </a>
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="fade-in">
+        <div class="section-eyebrow">Client Results</div>
+        <h2 class="section-title">Philippine Businesses<br>Growing With Steven</h2>
+      </div>
+      <div class="testi-grid fade-in" style="transition-delay:0.1s;">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">"Within 2 weeks of our new website going live, online reservations tripled. Steven delivered exactly what he promised — and faster than any other agency we tried."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">MC</div>
+            <div>
+              <div class="testi-name">Maria Clara R.</div>
+              <div class="testi-biz">Cafe Owner · Quezon City</div>
+            </div>
           </div>
         </div>
-
-        <!-- Right: Form -->
-        <div class="bento-card bg-white border border-blue-100 p-8 shadow-sm">
-          <h3 class="font-syne font-extrabold text-xl text-slate-900 tracking-tight mb-6">Send a Message</h3>
-          <form onsubmit="handleFormSubmit(event)" class="flex flex-col gap-4">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">"I was scared to invest in a website. The zero-risk prototype changed everything. I saw my salon's site fully designed before paying — napaka-professional!"</p>
+          <div class="testi-author">
+            <div class="testi-avatar">AL</div>
             <div>
-              <label class="block text-sm font-medium text-slate-600 mb-1.5">Your Name</label>
-              <input type="text" id="form-name" placeholder="Juan dela Cruz" required
-                     class="w-full px-4 py-3 bg-blue-50 border border-blue-100 rounded-xl text-slate-900 text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
+              <div class="testi-name">Angel Lim</div>
+              <div class="testi-biz">Salon Owner · Makati</div>
             </div>
-            <div>
-              <label class="block text-sm font-medium text-slate-600 mb-1.5">Business Type</label>
-              <input type="text" id="form-business" placeholder="e.g. Café, Dental Clinic, Gym..." required
-                     class="w-full px-4 py-3 bg-blue-50 border border-blue-100 rounded-xl text-slate-900 text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-slate-600 mb-1.5">Phone / Email</label>
-              <input type="text" id="form-contact" placeholder="09XXXXXXXXX or email@example.com" required
-                     class="w-full px-4 py-3 bg-blue-50 border border-blue-100 rounded-xl text-slate-900 text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all" />
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-slate-600 mb-1.5">What do you need?</label>
-              <textarea id="form-message" rows="4" placeholder="Tell Steven about your business and what you're looking for..."
-                        class="w-full px-4 py-3 bg-blue-50 border border-blue-100 rounded-xl text-slate-900 text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"></textarea>
-            </div>
-            <button type="submit"
-                    class="cta-primary bg-blue-600 text-white font-syne font-bold text-base py-4 rounded-2xl hover:bg-blue-500 hover:scale-105 transition-all duration-200 mt-2">
-              🚀 Get My Free Website Prototype
-            </button>
-          </form>
-          <div id="form-success" class="hidden mt-4 bg-green-50 border border-green-200 rounded-xl p-4 text-green-700 text-sm font-medium text-center">
-            ✅ Message sent! Steven will reach out to you shortly.
           </div>
         </div>
-
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">"Our gym membership inquiries went up by 4x in the first month. The site looks like it was made for a mall chain, but Steven made it specifically for us."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">JD</div>
+            <div>
+              <div class="testi-name">Jake Domingo</div>
+              <div class="testi-biz">Gym Owner · Mandaluyong</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
+</main>
 
-  <!-- ===== FOOTER ===== -->
-  <footer class="bg-slate-900 border-t border-slate-800 py-12 px-5 md:px-10">
-    <div class="max-w-7xl mx-auto">
-      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-        <div>
-          <div class="font-syne font-extrabold text-2xl text-white tracking-tight flex items-center gap-2 mb-3">
-            <span class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-              <span class="text-white text-xs font-extrabold">SD</span>
-            </span>
-            STEVEN DESIGNS
-          </div>
-          <p class="text-slate-500 text-sm max-w-xs leading-relaxed">Premium Web Systems for Philippine Businesses. Zero-Risk. Zero-Upfront. Pure Results.</p>
-          <div class="flex gap-4 mt-4">
-            <a href="tel:09623797660" class="text-blue-400 text-sm hover:text-blue-300 transition-colors font-medium">📞 09623797660</a>
-            <a href="mailto:steven.designs21@gmail.com" class="text-blue-400 text-sm hover:text-blue-300 transition-colors font-medium">✉️ Email</a>
-          </div>
-        </div>
-        <div class="flex flex-col items-start md:items-end gap-3">
-          <a href="tel:09623797660"
-             class="cta-primary bg-blue-600 text-white font-syne font-bold text-sm px-6 py-3 rounded-xl hover:bg-blue-500 hover:scale-105 transition-all duration-200">
-            Get Your Free Site →
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Steven<span>.</span></div>
+        <p class="footer-desc">Custom business engines for Philippine cafes, salons, gyms, auto shops, and restaurants. Built to convert. Built to impress.</p>
+        <div class="footer-contact">
+          <a href="tel:09623797660" aria-label="Call Steven Designs">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            0962-379-7660
           </a>
-          <p class="text-slate-600 text-xs">© 2025 Steven Designs. Built in the Philippines 🇵🇭</p>
+          <a href="mailto:steven.designs21@gmail.com" aria-label="Email Steven Designs">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            steven.designs21@gmail.com
+          </a>
         </div>
       </div>
+      <div>
+        <div class="footer-col-title">Pages</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Steven</a></li>
+          <li><a href="services.html">Services &amp; Pricing</a></li>
+          <li><a href="contact.html">Start a Project</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Industries</div>
+        <ul class="footer-links">
+          <li><a href="services.html">Cafe &amp; Coffee Shop</a></li>
+          <li><a href="services.html">Salon &amp; Spa</a></li>
+          <li><a href="services.html">Gym &amp; Fitness</a></li>
+          <li><a href="services.html">Auto Repair &amp; Detailing</a></li>
+          <li><a href="services.html">Restaurant &amp; Food &amp; Bev</a></li>
+        </ul>
+      </div>
     </div>
-  </footer>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Steven Designs. All rights reserved. Philippines.</div>
+      <div class="footer-made">Built with obsession — not templates.</div>
+    </div>
+  </div>
+</footer>
 
-  <!-- ===== JS ===== -->
-  <script>
-    // Mobile Menu Toggle
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
+<script>
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileNav.classList.toggle('open');
+  });
 
-    // Close mobile menu when a link is clicked
-    const mobileLinks = mobileMenu.querySelectorAll('a');
-    mobileLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-      });
-    });
-
-    // Form Submission Handler
-    function handleFormSubmit(event) {
-      event.preventDefault();
-      const name = document.getElementById('form-name').value.trim();
-      const business = document.getElementById('form-business').value.trim();
-      const contact = document.getElementById('form-contact').value.trim();
-      if (!name || !business || !contact) return;
-
-      const successEl = document.getElementById('form-success');
-      successEl.classList.remove('hidden');
-      event.target.reset();
-
-      setTimeout(() => {
-        successEl.classList.add('hidden');
-      }, 6000);
-    }
-
-    // Smooth scroll offset for sticky nav
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          e.preventDefault();
-          const offset = 72;
-          const top = target.getBoundingClientRect().top + window.scrollY - offset;
-          window.scrollTo({ top, behavior: 'smooth' });
-        }
-      });
-    });
-
-    // Intersection Observer for fade-in on scroll
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.bento-card').forEach(card => {
-      card.style.opacity = '0';
-      card.style.transform = 'translateY(24px)';
-      card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      observer.observe(card);
-    });
-  </script>
-
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
