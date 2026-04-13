@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services & Pricing — Steven Designs | Philippine Web Agency</title>
+  <meta name="description" content="Steven Designs offers premium web systems for cafes, salons, gyms, auto shops, and restaurants in the Philippines. See our service packages and zero-risk pricing." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com" defer></script>
+  <style>
+    :root{--accent:#C8A96E;--accent-light:#E8C98A;--dark:#0E0E10;--ink:#1A1A1E;--muted:#6B7280;--surface:#F8F7F4;--glow:rgba(200,169,110,0.35);}
+    *{margin:0;padding:0;box-sizing:border-box;}html{font-family:'Outfit',sans-serif;}
+    body{background:var(--surface);color:var(--ink);overflow-x:hidden;}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(248,247,244,0.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(200,169,110,0.15);}
+    .nav-inner{max-width:1280px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:68px;}
+    .nav-logo{font-family:'DM Serif Display',serif;font-size:1.4rem;color:var(--ink);text-decoration:none;letter-spacing:-0.02em;}
+    .nav-logo span{color:var(--accent);}
+    .nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center;}
+    .nav-links a{font-size:0.875rem;font-weight:500;color:var(--muted);text-decoration:none;letter-spacing:0.02em;position:relative;transition:color 0.3s;}
+    .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:var(--accent);transition:width 0.3s ease;}
+    .nav-links a:hover{color:var(--ink);}
+    .nav-links a:hover::after{width:100%;}
+    .nav-cta{background:var(--ink);color:#fff !important;padding:0.55rem 1.4rem;border-radius:100px;font-size:0.875rem !important;font-weight:600 !important;transition:all 0.3s ease !important;}
+    .nav-cta::after{display:none !important;}
+    .nav-cta:hover{background:var(--accent) !important;color:var(--ink) !important;box-shadow:0 0 20px var(--glow) !important;}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--ink);transition:all 0.3s;border-radius:2px;}
+    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    .hamburger.open span:nth-child(2){opacity:0;}
+    .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+    .mobile-nav{display:none;position:fixed;top:68px;left:0;right:0;background:rgba(248,247,244,0.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(200,169,110,0.15);padding:1.5rem 2rem;z-index:99;flex-direction:column;gap:1.5rem;}
+    .mobile-nav.open{display:flex;}
+    .mobile-nav a{font-size:1rem;font-weight:500;color:var(--ink);text-decoration:none;}
+    .container{max-width:1280px;margin:0 auto;padding:0 2rem;}
+    .section-eyebrow{font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;}
+    .section-title{font-family:'DM Serif Display',serif;font-size:clamp(2rem,4vw,3.5rem);line-height:1.1;letter-spacing:-0.03em;color:var(--ink);margin-bottom:1.25rem;}
+    .fade-in{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease;}
+    .fade-in.visible{opacity:1;transform:translateY(0);}
+    .float-cta{position:fixed;bottom:2rem;right:2rem;z-index:90;display:flex;flex-direction:column;gap:0.75rem;align-items:flex-end;}
+    .float-btn{display:flex;align-items:center;gap:0.6rem;background:var(--ink);color:white;padding:0.75rem 1.25rem;border-radius:100px;font-size:0.825rem;font-weight:600;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,0.25);transition:all 0.3s ease;min-height:44px;}
+    .float-btn:hover{background:var(--accent);color:var(--ink);transform:scale(1.05) translateX(-3px);box-shadow:0 12px 40px var(--glow);}
+    .float-btn.phone{background:#22C55E;}
+    .float-btn.phone:hover{background:#16A34A;}
+    .check{width:20px;height:20px;border-radius:50%;background:rgba(200,169,110,0.15);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .check svg{width:11px;height:11px;stroke:var(--accent);stroke-width:2.5;}
+    footer{background:var(--ink);padding:5rem 0 2.5rem;}
+    .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:4rem;margin-bottom:4rem;}
+    .footer-brand{font-family:'DM Serif Display',serif;font-size:1.6rem;color:white;margin-bottom:1rem;}
+    .footer-brand span{color:var(--accent);}
+    .footer-desc{font-size:0.875rem;line-height:1.75;color:rgba(255,255,255,0.4);max-width:280px;}
+    .footer-contact{margin-top:1.5rem;display:flex;flex-direction:column;gap:0.6rem;}
+    .footer-contact a{font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;display:flex;align-items:center;gap:0.5rem;transition:color 0.3s;}
+    .footer-contact a:hover{color:var(--accent);}
+    .footer-col-title{font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:1.25rem;}
+    .footer-links{list-style:none;display:flex;flex-direction:column;gap:0.75rem;}
+    .footer-links a{font-size:0.875rem;color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.3s;}
+    .footer-links a:hover{color:var(--accent);}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,0.07);padding-top:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+    .footer-copy{font-size:0.8rem;color:rgba(255,255,255,0.25);}
+    @media(max-width:1024px){.pricing-grid{grid-template-columns:1fr 1fr !important;}.footer-grid{grid-template-columns:1fr 1fr;}}
+    @media(max-width:768px){.nav-links{display:none;}.hamburger{display:flex;}.pricing-grid{grid-template-columns:1fr !important;}.industry-services{grid-template-columns:1fr !important;}.footer-grid{grid-template-columns:1fr;gap:2.5rem;}.float-cta{bottom:1.25rem;right:1.25rem;}}
+  </style>
+</head>
+<body>
+<div class="float-cta">
+  <a href="tel:09623797660" class="float-btn phone" aria-label="Call Steven Designs"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>0962-379-7660</a>
+  <a href="mailto:steven.designs21@gmail.com" class="float-btn" aria-label="Email Steven Designs"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Email Us</a>
+</div>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Steven<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html" class="nav-cta">Start Project</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a>
+  <a href="contact.html" style="color:var(--accent);font-weight:700;">→ Start Project</a>
+</div>
+
+<main>
+  <!-- HERO -->
+  <section style="padding-top:10rem;padding-bottom:5rem;background:var(--ink);position:relative;overflow:hidden;">
+    <div style="position:absolute;top:-200px;left:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(200,169,110,0.1),transparent);border-radius:50%;"></div>
+    <div class="container" style="position:relative;z-index:1;">
+      <div class="fade-in">
+        <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(200,169,110,0.1);border:1px solid rgba(200,169,110,0.25);color:var(--accent);font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.4rem 1rem;border-radius:100px;margin-bottom:1.5rem;">Services &amp; Packages</div>
+        <h1 style="font-family:'DM Serif Display',serif;font-size:clamp(3rem,6vw,5rem);line-height:1.05;letter-spacing:-0.03em;color:white;margin-bottom:1.25rem;">Everything Your<br>Business Needs to<br><em style="font-style:italic;color:var(--accent);">Win Online</em></h1>
+        <p style="font-size:1.1rem;color:rgba(255,255,255,0.45);max-width:520px;line-height:1.75;">From a single landing page to a full multi-page web system — every project starts with a free prototype and ends with results you can measure.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRY PACKAGES -->
+  <section style="padding:7rem 0;background:white;">
+    <div class="container">
+      <div class="fade-in" style="text-align:center;max-width:620px;margin:0 auto 4.5rem;">
+        <div class="section-eyebrow">By Industry</div>
+        <h2 class="section-title">What We Build,<br>By Business Type</h2>
+        <p style="font-size:1rem;color:var(--muted);line-height:1.75;">Each industry gets a purpose-built system — not a reskinned template. Here's what's included per business type.</p>
+      </div>
+      <div class="industry-services" style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;">
+        <!-- Cafe -->
+        <div style="background:var(--surface);border-radius:24px;padding:2.5rem;transition:transform 0.3s,box-shadow 0.3s;" onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 25px 60px rgba(0,0,0,0.1)';" onmouseleave="this.style.transform='';this.style.boxShadow='';">
+          <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;">
+            <div style="font-size:2rem;">🍵</div>
+            <div>
+              <div style="font-family:'DM Serif Display',serif;font-size:1.3rem;color:var(--ink);">Cafe &amp; Coffee Shop</div>
+              <div style="font-size:0.75rem;color:var(--muted);font-weight:500;">Ambiance · Menu · Orders</div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:0.75rem;">
+            <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;color:var(--ink);">
+              <span class="check"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span>Full menu showcase with photos &amp; prices
+            </div>
+            <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;color:var(--ink);">
+              <span class="check"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span>Online reservation &amp; table booking system
+            </div>
+            <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;color:var(--ink);">
+              <span class="check"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span>Ambiance gallery &amp; story section
+            </div>
+            <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;color:var(--ink);">
+              <span class="check"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span>Google Maps + operating hours embed
+            </div>
+            <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;color:var(--ink);">
+              <span class="check"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span>Messenger &amp; click-to-call CTA buttons
+            </div>
+          </div>
+        </div>
+        <!-- Salon -->
+        <div style="background:var(--surface);border-radius:24px;padding:2.5rem;transition:transform 0.3s,box-shadow 0.3s;" onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 25px 60px rgba(0,0,0,0.1)';" onmouseleave="this.style.transform='';this.style.boxShadow='';">
+          <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;">
+            <div style="font-size:2rem;">💇</div>
+            <div>
+              <div style="font-family:'DM Serif Display',serif;font-size:1.3rem;color:var(--ink);">Salon &amp; Spa</div>
+              <div style="font-size:0.75rem;color:var(--muted);font-weight:500;">Booking · Gallery · Pricing</div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:0.75rem;">
+            <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;color:var(--ink);">
+              <span class="check"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span>Appointment booking &amp; scheduling widget
+            </div>
+            <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;color:var(--ink);">
+              <span class="check"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span>Services &amp; pricing list with before/after gallery
+            </div>
+            <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;color:var(--ink);">
+              <span class="check"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span>Stylist profiles &amp; specializations
+            </div>
+            <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;color:var(--ink);">
+              <span class="check"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span>Promo &amp; package highlight section
+            </div>
+            <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;color:var(--ink);">
+              <span class="check"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span>Google review integration &amp; social links
+            </div>
+          </div>
+        </div>
+        <!-- Gym -->
+        <div style="background:var(--surface);border-radius:24px;padding:2.5rem;transition:transform 0.3s,box-shadow 0.3s;" onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 25px 60px rgba(0,0,0,0.1)';" onmouseleave="this.style.transform='';this.style.boxShadow='';">
+          <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;">
+            <div style="font-size:2rem;">🏋️</div>
+            <div>
+              <div style="font-family:'DM Serif Display',serif;font-size:1.3rem;color:var(--ink);">Gym &amp; Fitness</div>
+              <div style="font-size:0.75rem;color:var(--muted);font-weight:500;">Lead Gen · Schedule · Promos</div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:0.75rem;">
+            <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;color:var(--ink);">
+              <span class="check"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span>Membership lead capture form (name, email, number)
+            </div>
+            <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;color:var(--ink);">
+              <span class="check"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span>Class schedule &amp; trainer bios
+            </div>
+            <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;color:var(--ink);">
+              <span class="check"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span>Membership tier &amp; pricing table
+            </div>
+            <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;color:var(--ink);">
+              <span class="check"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span>Facilities photo gallery &amp; equipment highlight
+            </div>
+            <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;color:var(--ink);">
+              <span class="check"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span>Promo timer / limited-slot urgency section
+            </div>
+          </div>
+        </div>
+        <!-- Auto -->
+        <div style="background:var(--surface);border-radius:24px;padding:2.5rem;transition:transform 0.3s,box-shadow 0.3s;" onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 25px 60px rgba(0,0,0,0.1)';" onmouseleave="this.style.transform='';this.style.boxShadow='';">
+          <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;">
+            <div style="font-size:2rem;">🔧</div>
+            <div>
+              <div style="font-family:'DM Serif Display',serif;font-size:1.3rem;color:var(--ink);">Auto Repair &amp; Detailing</div>
+              <div style="font-size:0.75rem;color:var(--muted);font-weight:500;">Leads · Maps · Reviews</div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:0.75rem;">
+            <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;color:var(--ink);">
+              <span class="check"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span>Service list with pricing &amp; turnaround times
+            </div>
+            <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;color:var(--ink);">
+              <span class="check"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span>Click-to-call &amp; Messenger inquiry buttons
+            </div>
+            <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;color:var(--ink);">
+              <span class="check"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span>Google Maps embed for easy location discovery
+            </div>
+            <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;color:var(--ink);">
+              <span class="check"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span>Before/after gallery &amp; customer testimonials
+            </div>
+            <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;color:var(--ink);">
+              <span class="check"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"/></svg></span>Trust badges: years in business, certifications
+            </div>
+          </div>
+        </div>
+        <!-- Restaurant (wide) -->
+        <div style="background:var(--ink);border-radius:24px;padding:2.5rem;grid-column:1/-1;transition:transform 0.3s,box-shadow 0.3s;" onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 30px 80px rgba(0,0,0,0.25)';" onmouseleave="this.style.transform='';this.style.boxShadow='';">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;">
+            <div>
+              <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;">
+                <div style="font-size:2rem;">🍽️</div>
+                <div>
+                  <div style="font-family:'DM Serif Display',serif;font-size:1.3rem;color:white;">Restaurant &amp; Food &amp; Bev</div>
+                  <div style="font-size:0.75rem;color:rgba(255,255,255,0.4);font-weight:500;">Menu · Reservations · Delivery</div>
+                </div>
+              </div>
+              <p style="font-size:0.9rem;color:rgba(255,255,255,0.45);line-height:1.7;margin-bottom:1.5rem;">From carinderia to fine dining — the most complete food &amp; bev web system in our catalog. Built to make hungry customers click "Reserve Now."</p>
+              <a href="contact.html" style="display:inline-flex;align-items:center;gap:0.5rem;background:var(--accent);color:var(--ink);padding:0.75rem 1.75rem;border-radius:100px;font-weight:700;font-size:0.875rem;text-decoration:none;transition:all 0.3s;min-height:44px;" onmouseenter="this.style.boxShadow='0 0 25px var(--glow)';" onmouseleave="this.style.boxShadow='';">Get This Package →</a>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:0.75rem;">
+              <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;color:rgba(255,255,255,0.75);"><span style="width:20px;height:20px;border-radius:50%;background:rgba(200,169,110,0.2);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#C8A96E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Full digital menu with categories &amp; allergen info</div>
+              <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;color:rgba(255,255,255,0.75);"><span style="width:20px;height:20px;border-radius:50%;background:rgba(200,169,110,0.2);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#C8A96E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Online reservation / dine-in booking form</div>
+              <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;color:rgba(255,255,255,0.75);"><span style="width:20px;height:20px;border-radius:50%;background:rgba(200,169,110,0.2);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#C8A96E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Food photography gallery &amp; featured dishes</div>
+              <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;color:rgba(255,255,255,0.75);"><span style="width:20px;height:20px;border-radius:50%;background:rgba(200,169,110,0.2);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#C8A96E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Delivery platform links (GrabFood, Foodpanda)</div>
+              <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.875rem;color:rgba(255,255,255,0.75);"><span style="width:20px;height:20px;border-radius:50%;background:rgba(200,169,110,0.2);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#C8A96E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>Private event &amp; catering inquiry section</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALWAYS INCLUDED -->
+  <section style="padding:7rem 0;background:var(--surface);">
+    <div class="container">
+      <div class="fade-in" style="text-align:center;max-width:600px;margin:0 auto 4rem;">
+        <div class="section-eyebrow">Every Package Includes</div>
+        <h2 class="section-title">No Extra Charges.<br>No Surprises.</h2>
+        <p style="font-size:1rem;color:var(--muted);line-height:1.75;">Every single project — regardless of industry or package — ships with these non-negotiables at zero extra cost.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;" class="fade-in">
+        <div style="background:white;border-radius:20px;padding:1.75rem;border:1px solid rgba(0,0,0,0.05);">
+          <div style="font-size:1.5rem;margin-bottom:0.875rem;">📱</div>
+          <div style="font-weight:700;font-size:0.95rem;color:var(--ink);margin-bottom:0.4rem;">Mobile-First Design</div>
+          <div style="font-size:0.825rem;color:var(--muted);line-height:1.6;">Pixel-perfect on iPhones, Androids, tablets, and large desktop screens.</div>
+        </div>
+        <div style="background:white;border-radius:20px;padding:1.75rem;border:1px solid rgba(0,0,0,0.05);">
+          <div style="font-size:1.5rem;margin-bottom:0.875rem;">⚡</div>
+          <div style="font-weight:700;font-size:0.95rem;color:var(--ink);margin-bottom:0.4rem;">Fast Load Speed</div>
+          <div style="font-size:0.825rem;color:var(--muted);line-height:1.6;">Sub-3-second load on Philippine mobile data. Optimized for real-world users.</div>
+        </div>
+        <div style="background:white;border-radius:20px;padding:1.75rem;border:1px solid rgba(0,0,0,0.05);">
+          <div style="font-size:1.5rem;margin-bottom:0.875rem;">🔍</div>
+          <div style="font-weight:700;font-size:0.95rem;color:var(--ink);margin-bottom:0.4rem;">SEO Foundation</div>
+          <div style="font-size:0.825rem;color:var(--muted);line-height:1.6;">Semantic HTML5, proper meta tags, and Google-ready structure out of the box.</div>
+        </div>
+        <div style="background:white;border-radius:20px;padding:1.75rem;border:1px solid rgba(0,0,0,0.05);">
+          <div style="font-size:1.5rem;margin-bottom:0.875rem;">🛡️</div>
+          <div style="font-weight:700;font-size:0.95rem;color:var(--ink);margin-bottom:0.4rem;">Free Prototype First</div>
+          <div style="font-size:0.825rem;color:var(--muted);line-height:1.6;">See the finished site before paying a single peso. Zero risk, always.</div>
+        </div>
+        <div style="background:white;border-radius:20px;padding:1.75rem;border:1px solid rgba(0,0,0,0.05);">
+          <div style="font-size:1.5rem;margin-bottom:0.875rem;">🔁</div>
+          <div style="font-weight:700;font-size:0.95rem;color:var(--ink);margin-bottom:0.4rem;">Unlimited Revisions</div>
+          <div style="font-size:0.825rem;color:var(--muted);line-height:1.6;">During the prototype phase, revisions are free. We don't stop until you love it.</div>
+        </div>
+        <div style="background:white;border-radius:20px;padding:1.75rem;border:1px solid rgba(0,0,0,0.05);">
+          <div style="font-size:1.5rem;margin-bottom:0.875rem;">📞</div>
+          <div style="font-weight:700;font-size:0.95rem;color:var(--ink);margin-bottom:0.4rem;">Contact Integration</div>
+          <div style="font-size:0.825rem;color:var(--muted);line-height:1.6;">Click-to-call, email, Messenger, and Google Maps — perfectly embedded.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background:var(--ink);padding:6rem 0;">
+    <div class="container" style="text-align:center;">
+      <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(2rem,4vw,3.5rem);color:white;letter-spacing:-0.03em;margin-bottom:1.25rem;" class="fade-in">Not Sure Which Package<br>Is Right for You?</h2>
+      <p style="color:rgba(255,255,255,0.45);font-size:1.05rem;margin-bottom:2.5rem;max-width:440px;margin-left:auto;margin-right:auto;" class="fade-in">Message us and we'll recommend exactly what your business needs — no pushy sales talk, just honest advice.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;" class="fade-in">
+        <a href="contact.html" style="display:inline-flex;align-items:center;gap:0.5rem;background:var(--accent);color:var(--ink);padding:0.875rem 2rem;border-radius:100px;font-weight:700;font-size:0.9rem;text-decoration:none;transition:all 0.3s ease;min-height:44px;" onmouseenter="this.style.boxShadow='0 0 30px var(--glow)';this.style.transform='scale(1.04)';" onmouseleave="this.style.boxShadow='';this.style.transform='';">Let's Talk →</a>
+        <a href="tel:09623797660" style="display:inline-flex;align-items:center;gap:0.5rem;background:transparent;color:white;padding:0.875rem 2rem;border-radius:100px;font-weight:600;font-size:0.9rem;text-decoration:none;border:1.5px solid rgba(255,255,255,0.2);transition:all 0.3s ease;min-height:44px;" onmouseenter="this.style.borderColor='var(--accent)';this.style.color='var(--accent)';" onmouseleave="this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='white';">0962-379-7660</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Steven<span>.</span></div>
+        <p class="footer-desc">Custom business engines for Philippine cafes, salons, gyms, auto shops, and restaurants. Built to convert. Built to impress.</p>
+        <div class="footer-contact">
+          <a href="tel:09623797660" aria-label="Call"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>0962-379-7660</a>
+          <a href="mailto:steven.designs21@gmail.com" aria-label="Email"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>steven.designs21@gmail.com</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Pages</div>
+        <ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About Steven</a></li><li><a href="services.html">Services</a></li><li><a href="contact.html">Start a Project</a></li></ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Industries</div>
+        <ul class="footer-links"><li><a href="services.html">Cafe &amp; Coffee Shop</a></li><li><a href="services.html">Salon &amp; Spa</a></li><li><a href="services.html">Gym &amp; Fitness</a></li><li><a href="services.html">Auto Repair</a></li><li><a href="services.html">Restaurant &amp; Food</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Steven Designs. All rights reserved. Philippines.</div>
+      <div class="footer-copy">Built with obsession — not templates.</div>
+    </div>
+  </div>
+</footer>
+<script>
+  const hamburger=document.getElementById('hamburger');const mobileNav=document.getElementById('mobileNav');hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');mobileNav.classList.toggle('open');});
+  const observer=new IntersectionObserver((e)=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.12});
+  document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
