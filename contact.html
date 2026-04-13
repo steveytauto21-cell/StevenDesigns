@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Start a Project — Steven Designs | Contact Us</title>
+  <meta name="description" content="Contact Steven Designs to start your free website prototype. We serve cafes, salons, gyms, auto shops, and restaurants across the Philippines. Call 09623797660." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com" defer></script>
+  <style>
+    :root{--accent:#C8A96E;--accent-light:#E8C98A;--dark:#0E0E10;--ink:#1A1A1E;--muted:#6B7280;--surface:#F8F7F4;--glow:rgba(200,169,110,0.35);}
+    *{margin:0;padding:0;box-sizing:border-box;}html{font-family:'Outfit',sans-serif;}
+    body{background:var(--surface);color:var(--ink);overflow-x:hidden;}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(248,247,244,0.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(200,169,110,0.15);}
+    .nav-inner{max-width:1280px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:68px;}
+    .nav-logo{font-family:'DM Serif Display',serif;font-size:1.4rem;color:var(--ink);text-decoration:none;letter-spacing:-0.02em;}
+    .nav-logo span{color:var(--accent);}
+    .nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center;}
+    .nav-links a{font-size:0.875rem;font-weight:500;color:var(--muted);text-decoration:none;letter-spacing:0.02em;position:relative;transition:color 0.3s;}
+    .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:var(--accent);transition:width 0.3s ease;}
+    .nav-links a:hover{color:var(--ink);}
+    .nav-links a:hover::after{width:100%;}
+    .nav-cta{background:var(--ink);color:#fff !important;padding:0.55rem 1.4rem;border-radius:100px;font-size:0.875rem !important;font-weight:600 !important;transition:all 0.3s ease !important;}
+    .nav-cta::after{display:none !important;}
+    .nav-cta:hover{background:var(--accent) !important;color:var(--ink) !important;}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--ink);transition:all 0.3s;border-radius:2px;}
+    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    .hamburger.open span:nth-child(2){opacity:0;}
+    .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+    .mobile-nav{display:none;position:fixed;top:68px;left:0;right:0;background:rgba(248,247,244,0.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(200,169,110,0.15);padding:1.5rem 2rem;z-index:99;flex-direction:column;gap:1.5rem;}
+    .mobile-nav.open{display:flex;}
+    .mobile-nav a{font-size:1rem;font-weight:500;color:var(--ink);text-decoration:none;}
+    .container{max-width:1280px;margin:0 auto;padding:0 2rem;}
+    .fade-in{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease;}
+    .fade-in.visible{opacity:1;transform:translateY(0);}
+    .float-cta{position:fixed;bottom:2rem;right:2rem;z-index:90;display:flex;flex-direction:column;gap:0.75rem;align-items:flex-end;}
+    .float-btn{display:flex;align-items:center;gap:0.6rem;background:var(--ink);color:white;padding:0.75rem 1.25rem;border-radius:100px;font-size:0.825rem;font-weight:600;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,0.25);transition:all 0.3s ease;min-height:44px;}
+    .float-btn:hover{background:var(--accent);color:var(--ink);transform:scale(1.05) translateX(-3px);box-shadow:0 12px 40px var(--glow);}
+    .float-btn.phone{background:#22C55E;}
+    .float-btn.phone:hover{background:#16A34A;}
+    /* FORM */
+    label{display:block;font-size:0.8rem;font-weight:600;color:var(--ink);letter-spacing:0.03em;margin-bottom:0.4rem;}
+    input,select,textarea{width:100%;background:var(--surface);border:1.5px solid rgba(14,14,16,0.12);border-radius:12px;padding:0.875rem 1.1rem;font-family:'Outfit',sans-serif;font-size:0.9rem;color:var(--ink);outline:none;transition:border-color 0.25s,box-shadow 0.25s;-webkit-appearance:none;}
+    input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(200,169,110,0.15);}
+    textarea{resize:vertical;min-height:120px;}
+    .submit-btn{width:100%;background:var(--ink);color:white;padding:1rem;border:none;border-radius:100px;font-family:'Outfit',sans-serif;font-size:0.95rem;font-weight:700;cursor:pointer;transition:all 0.3s ease;min-height:48px;letter-spacing:0.01em;}
+    .submit-btn:hover{background:var(--accent);color:var(--ink);box-shadow:0 0 30px var(--glow);transform:scale(1.02);}
+    footer{background:var(--ink);padding:5rem 0 2.5rem;}
+    .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:4rem;margin-bottom:4rem;}
+    .footer-brand{font-family:'DM Serif Display',serif;font-size:1.6rem;color:white;margin-bottom:1rem;}
+    .footer-brand span{color:var(--accent);}
+    .footer-desc{font-size:0.875rem;line-height:1.75;color:rgba(255,255,255,0.4);max-width:280px;}
+    .footer-contact{margin-top:1.5rem;display:flex;flex-direction:column;gap:0.6rem;}
+    .footer-contact a{font-size:0.875rem;color:rgba(255,255,255,0.5);text-decoration:none;display:flex;align-items:center;gap:0.5rem;transition:color 0.3s;}
+    .footer-contact a:hover{color:var(--accent);}
+    .footer-col-title{font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:1.25rem;}
+    .footer-links{list-style:none;display:flex;flex-direction:column;gap:0.75rem;}
+    .footer-links a{font-size:0.875rem;color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.3s;}
+    .footer-links a:hover{color:var(--accent);}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,0.07);padding-top:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+    .footer-copy{font-size:0.8rem;color:rgba(255,255,255,0.25);}
+    @media(max-width:1024px){.contact-grid{grid-template-columns:1fr !important;}.footer-grid{grid-template-columns:1fr 1fr;}}
+    @media(max-width:768px){.nav-links{display:none;}.hamburger{display:flex;}.footer-grid{grid-template-columns:1fr;gap:2.5rem;}.float-cta{bottom:1.25rem;right:1.25rem;}}
+  </style>
+</head>
+<body>
+<div class="float-cta">
+  <a href="tel:09623797660" class="float-btn phone" aria-label="Call Steven Designs"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>0962-379-7660</a>
+  <a href="mailto:steven.designs21@gmail.com" class="float-btn" aria-label="Email Steven Designs"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Email Us</a>
+</div>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Steven<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html" class="nav-cta">Start Project</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a>
+  <a href="contact.html" style="color:var(--accent);font-weight:700;">→ Start Project</a>
+</div>
+
+<main>
+  <!-- HERO -->
+  <section style="padding-top:10rem;padding-bottom:5rem;background:var(--ink);position:relative;overflow:hidden;">
+    <div style="position:absolute;top:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(200,169,110,0.1),transparent);border-radius:50%;"></div>
+    <div class="container" style="position:relative;z-index:1;">
+      <div class="fade-in" style="max-width:700px;">
+        <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(200,169,110,0.1);border:1px solid rgba(200,169,110,0.25);color:var(--accent);font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.4rem 1rem;border-radius:100px;margin-bottom:1.5rem;">Start a Project</div>
+        <h1 style="font-family:'DM Serif Display',serif;font-size:clamp(3rem,6vw,5rem);line-height:1.05;letter-spacing:-0.03em;color:white;margin-bottom:1.25rem;">Let's Build<br>Something That<br><em style="font-style:italic;color:var(--accent);">Actually Works</em></h1>
+        <p style="font-size:1.1rem;color:rgba(255,255,255,0.45);line-height:1.75;max-width:480px;">Fill out the form below or reach us directly. We'll get back to you within 24 hours with a plan — no cost, no commitment.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section style="padding:7rem 0;background:white;">
+    <div class="container">
+      <div class="contact-grid" style="display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;align-items:start;">
+        <!-- LEFT: Info -->
+        <div class="fade-in">
+          <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;">Get In Touch</div>
+          <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(2rem,3.5vw,3rem);line-height:1.1;letter-spacing:-0.03em;color:var(--ink);margin-bottom:1.5rem;">We Reply<br>Within 24 Hours</h2>
+          <p style="font-size:0.95rem;color:var(--muted);line-height:1.75;margin-bottom:3rem;">Whether you have a full brief or just a rough idea — reach out. The discovery conversation is free and has zero strings attached.</p>
+
+          <!-- DIRECT CONTACTS -->
+          <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:3rem;">
+            <a href="tel:09623797660" aria-label="Call Steven Designs" style="display:flex;align-items:center;gap:1rem;background:var(--surface);border-radius:16px;padding:1.25rem 1.5rem;text-decoration:none;transition:all 0.3s ease;border:1.5px solid transparent;" onmouseenter="this.style.borderColor='var(--accent)';this.style.transform='translateX(4px)';" onmouseleave="this.style.borderColor='transparent';this.style.transform='';">
+              <div style="width:48px;height:48px;background:rgba(34,197,94,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              </div>
+              <div>
+                <div style="font-size:0.75rem;font-weight:600;color:var(--muted);margin-bottom:0.15rem;">Call or Text Anytime</div>
+                <div style="font-weight:700;font-size:1rem;color:var(--ink);">0962-379-7660</div>
+              </div>
+            </a>
+            <a href="mailto:steven.designs21@gmail.com" aria-label="Email Steven Designs" style="display:flex;align-items:center;gap:1rem;background:var(--surface);border-radius:16px;padding:1.25rem 1.5rem;text-decoration:none;transition:all 0.3s ease;border:1.5px solid transparent;" onmouseenter="this.style.borderColor='var(--accent)';this.style.transform='translateX(4px)';" onmouseleave="this.style.borderColor='transparent';this.style.transform='';">
+              <div style="width:48px;height:48px;background:rgba(200,169,110,0.12);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C8A96E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <div style="font-size:0.75rem;font-weight:600;color:var(--muted);margin-bottom:0.15rem;">Email Us</div>
+                <div style="font-weight:700;font-size:0.9rem;color:var(--ink);">steven.designs21@gmail.com</div>
+              </div>
+            </a>
+          </div>
+
+          <!-- QUICK FACTS -->
+          <div style="border-top:1px solid rgba(14,14,16,0.08);padding-top:2rem;">
+            <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;">What Happens Next</div>
+            <div style="display:flex;flex-direction:column;gap:0.875rem;">
+              <div style="display:flex;align-items:flex-start;gap:0.875rem;">
+                <div style="width:28px;height:28px;background:rgba(200,169,110,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.75rem;font-weight:700;color:var(--accent);">1</div>
+                <div style="font-size:0.875rem;color:var(--muted);line-height:1.6;">We review your message and reply within <strong style="color:var(--ink);">24 hours</strong></div>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:0.875rem;">
+                <div style="width:28px;height:28px;background:rgba(200,169,110,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.75rem;font-weight:700;color:var(--accent);">2</div>
+                <div style="font-size:0.875rem;color:var(--muted);line-height:1.6;">We schedule a <strong style="color:var(--ink);">free 20-minute discovery call</strong> to understand your goals</div>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:0.875rem;">
+                <div style="width:28px;height:28px;background:rgba(200,169,110,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.75rem;font-weight:700;color:var(--accent);">3</div>
+                <div style="font-size:0.875rem;color:var(--muted);line-height:1.6;">We start building your <strong style="color:var(--ink);">free prototype</strong> within 72 hours</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Form -->
+        <div class="fade-in" style="transition-delay:0.1s;">
+          <div style="background:var(--surface);border-radius:28px;padding:2.5rem;position:relative;overflow:hidden;">
+            <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--accent),#6E9EC8,var(--accent));"></div>
+            <h3 style="font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--ink);margin-bottom:0.5rem;margin-top:0.5rem;">Start Your Free Prototype</h3>
+            <p style="font-size:0.875rem;color:var(--muted);margin-bottom:2rem;">No payment. No commitment. Just the beginning.</p>
+            <form id="contactForm" style="display:flex;flex-direction:column;gap:1.25rem;" onsubmit="handleSubmit(event)">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                <div>
+                  <label for="name">Your Name *</label>
+                  <input type="text" id="name" name="name" placeholder="Juan dela Cruz" required />
+                </div>
+                <div>
+                  <label for="phone">Phone Number *</label>
+                  <input type="tel" id="phone" name="phone" placeholder="09XX-XXX-XXXX" required />
+                </div>
+              </div>
+              <div>
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="you@yourbusiness.com" />
+              </div>
+              <div>
+                <label for="business">Business Name *</label>
+                <input type="text" id="business" name="business" placeholder="e.g. Brew & Bloom Cafe" required />
+              </div>
+              <div>
+                <label for="industry">Business Type *</label>
+                <select id="industry" name="industry" required>
+                  <option value="" disabled selected>Select your industry</option>
+                  <option>Cafe / Coffee Shop</option>
+                  <option>Salon / Spa / Beauty</option>
+                  <option>Gym / Fitness Studio</option>
+                  <option>Auto Repair / Detailing</option>
+                  <option>Restaurant / Food &amp; Bev</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div>
+                <label for="goal">Primary Goal *</label>
+                <select id="goal" name="goal" required>
+                  <option value="" disabled selected>What do you need most?</option>
+                  <option>More customer inquiries / leads</option>
+                  <option>Online booking / appointments</option>
+                  <option>Portfolio / credibility showcase</option>
+                  <option>Online menu / catalog</option>
+                  <option>All of the above</option>
+                </select>
+              </div>
+              <div>
+                <label for="message">Tell Us About Your Business</label>
+                <textarea id="message" name="message" placeholder="Describe your business, target customers, what you want the site to achieve — anything helps."></textarea>
+              </div>
+              <button type="submit" class="submit-btn" id="submitBtn">
+                Request Free Prototype →
+              </button>
+              <p style="font-size:0.75rem;color:var(--muted);text-align:center;">🔒 Your info is safe. We never spam or share your details.</p>
+            </form>
+            <div id="successMsg" style="display:none;text-align:center;padding:2rem;">
+              <div style="font-size:3rem;margin-bottom:1rem;">🎉</div>
+              <h3 style="font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--ink);margin-bottom:0.75rem;">Message Sent!</h3>
+              <p style="font-size:0.9rem;color:var(--muted);line-height:1.7;">Thanks! Steven will reach out within 24 hours to discuss your free prototype. Check your email and keep your phone handy.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP SECTION -->
+  <section style="padding:5rem 0;background:var(--surface);">
+    <div class="container">
+      <div class="fade-in" style="text-align:center;margin-bottom:2.5rem;">
+        <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;">Find Us</div>
+        <h2 style="font-family:'DM Serif Display',serif;font-size:2.25rem;color:var(--ink);letter-spacing:-0.03em;">Based in the Philippines,<br>Serving Nationwide</h2>
+      </div>
+      <div class="fade-in" style="width:100%;height:380px;border-radius:24px;overflow:hidden;border:1px solid rgba(14,14,16,0.08);box-shadow:0 4px 40px rgba(0,0,0,0.06);">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d247574.17878897!2d120.87903!3d14.62402!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b7775cf9ea97%3A0x15e48e55f8f4a59b!2sQuezon%20City%2C%20Metro%20Manila%2C%20Philippines!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Steven Designs Location - Metro Manila, Philippines"></iframe>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Steven<span>.</span></div>
+        <p class="footer-desc">Custom business engines for Philippine cafes, salons, gyms, auto shops, and restaurants. Built to convert. Built to impress.</p>
+        <div class="footer-contact">
+          <a href="tel:09623797660" aria-label="Call"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>0962-379-7660</a>
+          <a href="mailto:steven.designs21@gmail.com" aria-label="Email"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>steven.designs21@gmail.com</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Pages</div>
+        <ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About Steven</a></li><li><a href="services.html">Services</a></li><li><a href="contact.html">Start a Project</a></li></ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Industries</div>
+        <ul class="footer-links"><li><a href="services.html">Cafe &amp; Coffee Shop</a></li><li><a href="services.html">Salon &amp; Spa</a></li><li><a href="services.html">Gym &amp; Fitness</a></li><li><a href="services.html">Auto Repair</a></li><li><a href="services.html">Restaurant &amp; Food</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Steven Designs. All rights reserved. Philippines.</div>
+      <div class="footer-copy">Built with obsession — not templates.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hamburger=document.getElementById('hamburger');const mobileNav=document.getElementById('mobileNav');hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');mobileNav.classList.toggle('open');});
+  const observer=new IntersectionObserver((e)=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.12});
+  document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    setTimeout(() => {
+      document.getElementById('contactForm').style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+    }, 1200);
+  }
+</script>
+</body>
+</html>
